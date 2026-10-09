@@ -1,0 +1,11 @@
+
+[secureaccess]
+enabled = true
+filter = secureaccess
+port = http,https
+logpath = /var/log/apache2/secureaccess-access.log
+maxretry = 3
+findtime = 900
+bantime = 900
+backend = auto
+banaction = iptables-multiport

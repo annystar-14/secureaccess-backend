@@ -1,0 +1,21 @@
+[Unit]
+Description=SecureAccess API
+After=network.target mariadb.service
+Wants=mariadb.service
+
+[Service]
+Type=simple
+User=secureaccess
+Group=secureaccess
+WorkingDirectory=/opt/secureaccess/backend
+EnvironmentFile=/etc/secureaccess/backend.env
+ExecStart=/usr/bin/node src/app.js
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=true
+ProtectSystem=full
+ProtectHome=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
